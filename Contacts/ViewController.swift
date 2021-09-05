@@ -13,7 +13,7 @@ class ViewController: UIViewController {
     
     private func loadContacts() {
         contacts.append(Contact(title: "Jhonny CIA", phone: "09112001"))
-        contacts.append(Contact(title: "Ivan KGB", phone: "89150001945"))
+        contacts.append(Contact(title: "Boris KGB", phone: "89150001945"))
         contacts.append(Contact(title: "James MI6", phone: "007"))
         contacts.sort{ $0.title < $1.title }
     }

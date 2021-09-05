@@ -27,7 +27,7 @@ class ViewController: UIViewController {
 extension ViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
 //        действия удаления
-        let actionDelete = UIContextualAction(style: .destructive, title: "Нахуй") { _,_,_ in
+        let actionDelete = UIContextualAction(style: .destructive, title: "Удалить") { _,_,_ in
 //            удаляем контакт
             self.contacts.remove(at: indexPath.row)
 //            заново формируем табличное представление

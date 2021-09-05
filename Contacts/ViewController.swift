@@ -8,23 +8,49 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    private var contacts = [ContactProtocol] ()
+    
+    private func loadContacts() {
+        contacts.append(Contact(title: "Jhon CIA", phone: "09112001"))
+        contacts.append(Contact(title: "Ivan KGB", phone: "89150001945"))
+        contacts.append(Contact(title: "James MI6", phone: "007"))
+        contacts.sort{ $0.title < $1.title }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        loadContacts()
     }
+}
 
-
+extension ViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+//        действия удаления
+        let actionDelete = UIContextualAction(style: .destructive, title: "Нахуй") { _,_,_ in
+//            удаляем контакт
+            self.contacts.remove(at: indexPath.row)
+//            заново формируем табличное представление
+            tableView.reloadData()
+        }
+//        формируем экземпляр, описывающие действия
+        let actions = UISwipeActionsConfiguration(actions: [actionDelete])
+        return actions
+    }
 }
 
 extension ViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 50
+        return contacts.count
     }
     
     private func configure (cell: inout UITableViewCell, for indexPath: IndexPath) {
         var configuration = cell.defaultContentConfiguration()
-        configuration.text = "Строка \(indexPath.row)"
+//        имя контакта
+        configuration.text = contacts[indexPath.row].title
+        
+//        номер телефона контакта
+        configuration.secondaryText = contacts[indexPath.row].phone
         cell.contentConfiguration = configuration
     }
     

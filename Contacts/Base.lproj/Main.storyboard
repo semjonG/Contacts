@@ -16,8 +16,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pPs-mo-tCx">
+                                <rect key="frame" x="0.0" y="761" width="390" height="49"/>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="dlH-Lb-b04"/>
+                                    <barButtonItem title="Создать контакт" id="h0e-UR-xAx">
+                                        <connections>
+                                            <action selector="showNewContactAlert" destination="BYZ-38-t0r" id="mgD-u3-zUR"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="XXB-jr-UoO">
-                                <rect key="frame" x="0.0" y="44" width="390" height="766"/>
+                                <rect key="frame" x="0.0" y="44" width="390" height="717"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <connections>
                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="aRf-Os-ikx"/>
@@ -30,14 +41,20 @@
                         <constraints>
                             <constraint firstItem="XXB-jr-UoO" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="6ux-7J-TqT"/>
                             <constraint firstItem="XXB-jr-UoO" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="BVi-Qz-ZBs"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="XXB-jr-UoO" secondAttribute="bottom" id="Jqf-Z8-WuU"/>
+                            <constraint firstItem="pPs-mo-tCx" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="E7r-Oz-oEm"/>
+                            <constraint firstItem="pPs-mo-tCx" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Rlp-yD-7Rf"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="pPs-mo-tCx" secondAttribute="bottom" id="bnu-2M-OdU"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="XXB-jr-UoO" secondAttribute="trailing" id="pRn-tz-yQ5"/>
+                            <constraint firstItem="pPs-mo-tCx" firstAttribute="top" secondItem="XXB-jr-UoO" secondAttribute="bottom" id="tA1-hM-ypm"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="XXB-jr-UoO" id="VUy-Z7-UjC"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="122" y="119"/>
+            <point key="canvasLocation" x="121.53846153846153" y="118.72037914691943"/>
         </scene>
     </scenes>
     <resources>

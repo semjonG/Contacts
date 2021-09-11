@@ -9,6 +9,8 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    var storage: ContactStorageProtocol!
+    
     @IBOutlet var tableView: UITableView!
     
     @IBAction func showNewContactAlert () {
@@ -53,18 +55,19 @@ class ViewController: UIViewController {
     var contacts: [ContactProtocol] = [] {
         didSet {
             contacts.sort { $0.title < $1.title }
+//            сохранение контактов в хранилище
+            storage.save(contacts: contacts)
         }
         
     }
     
     private func loadContacts() {
-        contacts.append(Contact(title: "Jhonny CIA", phone: "09112001"))
-        contacts.append(Contact(title: "Boris KGB", phone: "89150001945"))
-        contacts.append(Contact(title: "James MI6", phone: "007"))
+        contacts = storage.load()
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        storage = ContactStorage()
         loadContacts()
     }
 }
